@@ -1,0 +1,6 @@
+- search
+- +templates+
+- +help+
+- (about)
+- (browser)
+- +community+

@@ -1,0 +1,11 @@
+{
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": ".*",
+        "isAsync": true,
+        "cmd": "echo >> ~/projects/genomehubs/genomehubs/src/genomehubs-ui/src/client/index.html"
+      }
+    ]
+  }
+}

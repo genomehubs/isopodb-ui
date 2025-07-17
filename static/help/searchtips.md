@@ -1,0 +1,5 @@
+Search by typing a [taxon name](/search?query=tax_name%28Capra%20hircus%29&result=taxon&includeEstimates=true&summaryValues=count&taxonomy=ncbi&size=10) or [ID](/search?query=tax_eq%289925%29&result=taxon&includeEstimates=true&summaryValues=count&taxonomy=ncbi&size=10) in the search box above (partial names and misspellings supported), or click the links to search for [Canis lupus](/search?query=tax_name%289612%5BCanis%20lupus%5D%29&result=taxon&summaryValues=count&taxonomy=ncbi), [Lepidoptera](/search?query=tax_name%287088%5BLepidoptera%5D%29&result=taxon&includeEstimates=true&taxonomy=ncbi), or [all bat families](/search?query=tax_tree%289397%5BChiroptera%5D%29%20AND%20tax_rank%28family%29&result=taxon&includeEstimates=true&taxonomy=ncbi).
+
+- Use the **result columns** icon below the search box to choose which attributes to display in the results table.
+- Use the **query builder** icon and drop-down lists to refine your query.
+- Toggle the options to **include descendants** (include descendant taxa) or **include estimates** (include estimated values) in the search results.

@@ -1,0 +1,3 @@
+MolluscDB contains data for
+:count{taxonomy=ncbi result=assembly query="tax_tree(2759)" inline description="assemblies in MolluscDB"} assemblies across
+:count{taxonomy=ncbi result=taxon query="tax_tree(2759) AND tax_rank(species)" inline includeEstimates description="mollusc species in MolluscDB"} species. Ancestral linkage group (ALG) predictions are based on analyses run using [syngraph](https://github.com/A-J-F-Mackintosh/syngraph). While preliminary assignments to 20 molluscan ALGs are available in MollucDB, the number of predicted ALGs and assignments of individual loci may change with more detailed analysis.

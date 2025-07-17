@@ -1,0 +1,76 @@
+name: package-isopodb-ui
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  package-isopodb-ui:
+    runs-on: ubuntu-latest
+    steps:
+      - id: genomehubs
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: genomehubs/genomehubs
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - run: npm install -g pkg
+      - run: |
+          # git clone -b ${{ steps.genomehubs.outputs.release }} https://github.com/genomehubs/genomehubs
+          git clone -b develop https://github.com/genomehubs/genomehubs
+          mv static/* genomehubs/src/genomehubs-ui/src/client/static/
+          mv files/favicon/* genomehubs/src/genomehubs-ui/src/client/favicon/
+          mv files/img/* genomehubs/src/genomehubs-ui/src/client/favicon/
+          mv files/components/* genomehubs/src/genomehubs-ui/src/client/views/components/
+          mv files/html/index.html genomehubs/src/genomehubs-ui/src/client/index.html
+      - run: cd genomehubs && ./package-ui.sh
+        env:
+          # GH_API_URL: "https://isopodb.genomehubs.org/api/v2"
+          GH_API_URL: "http://172.27.23.186:3000/api/v2"
+          GH_BASENAME: ""
+          GH_SITENAME: IsopoDB
+          GH_SUGGESTED_TERM: Asellota
+      - uses: actions/upload-artifact@v3
+        with:
+          name: isopodb-ui
+          path: ./genomehubs/dist/*
+
+  build-and-push-isopodb-ui:
+    runs-on: ubuntu-latest
+    needs: package-isopodb-ui
+    steps:
+      - id: genomehubs
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: genomehubs/genomehubs
+      - run: |
+          git clone -b ${{ steps.genomehubs.outputs.release }} https://github.com/genomehubs/genomehubs
+      - uses: actions/download-artifact@v3
+        with:
+          name: isopodb-ui
+          path: ./dist
+      - run: |
+          mv dist/genomehubs-ui-linux genomehubs/src/docker/isopodb/
+          rm -r dist/*
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: genomehubs/isopodb
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: genomehubs/src/docker/isopodb
+          push: true
+          tags: genomehubs/isopodb:latest
+          labels: ${{ steps.meta.outputs.labels }}
