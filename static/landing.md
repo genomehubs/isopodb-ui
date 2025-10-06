@@ -2,8 +2,7 @@
 
 IsopoDB contains data for
 :count{taxonomy=ncbi result=assembly query="tax_tree(2759)" inline description="assemblies in IsopoDB"} assemblies across
-:count{taxonomy=ncbi result=taxon query="tax_tree(2759) AND tax_rank(species)" inline includeEstimates description="isopod species in IsopoDB"} species. The map below summarises the geographic distibutions of these species as a count of included species per country, based on [GBIF](https://www.gbif.org) occurrence data.
-
+:count{taxonomy=ncbi result=taxon query="tax_tree(2759) AND tax_rank(species)" inline includeEstimates description="isopod species in IsopoDB"} species, including :count{taxonomy=ncbi result=taxon query="tax_tree(!29979) AND tax_rank(species)" inline includeEstimates description="isopod species in IsopoDB"} outgroup. The map below summarises the geographic distibutions of these species as a count of included species per country, based on [GBIF](https://www.gbif.org) occurrence data.
 
 ```report
 report: map
@@ -18,7 +17,6 @@ taxonomy: ncbi
 ratio: 2.4
 size: 12
 ```
-
 
 ## Search templates
 
@@ -76,12 +74,10 @@ ratio: 2
 
 Busco identities are recorded for each taxon, allowing plots of BUSCO counts against other assembly metrics.
 
-
-
 ```report
 report: scatter
 x: tax_tree(Isopoda) AND assembly_span AND arthropoda_odb10_complete
-y: arthropoda_odb10_complete_percent
+y: arthropoda_odb10_complete_proportion
 rank: species
 cat: genus[6]
 includeEstimates: false
@@ -92,4 +88,3 @@ size: 12
 ratio: 2
 caption: Arthropoda BUSCO completeness against assembly span for the genera represented in IsopoDB
 ```
-
