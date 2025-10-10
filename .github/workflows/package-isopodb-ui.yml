@@ -5,6 +5,8 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 jobs:
   package-isopodb-ui:
     runs-on: ubuntu-latest
