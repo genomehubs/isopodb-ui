@@ -1,6 +1,6 @@
 # Help
 
-_Borrowed from the [GoaT](https://goat.genomehubs.org) help text. This page will be updated with MolluscDB-specific help soon._
+_Borrowed from the [GoaT](https://goat.genomehubs.org) help text. This page will be updated with IsopoDB-specific help soon._
 
 :::grid{container direction="row" toggle expand title="Getting started" spacing="1"}
 

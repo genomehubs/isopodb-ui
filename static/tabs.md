@@ -3,4 +3,3 @@
 - +help+
 - (about)
 - (browser)
-- +community+
