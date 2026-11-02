@@ -1,6 +1,6 @@
 ::breadcrumbs[Oxford plots]
 
-Oxford plots allow you to visualize synteny and rearrangements between pairs of genomes. Patterns in linkage group and gene order conservation differ across lineages.
+Oxford plots visualise synteny and rearrangements between pairs of genomes. Patterns in linkage group and gene order conservation differ across lineages.
 
 As the distance between species increases for these species pairs, fewer shared genes remain in the same order and orientation, though remnants of ancestral linkage groups persist. Such plots help uncover genomic architecture evolution.
 

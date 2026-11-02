@@ -1,23 +1,20 @@
 ::breadcrumbs[Ribbon plots]
 
-Ribbon plots allow you to visualize synteny and rearrangements between assemblies. This example plot shows the conservation of synteny between 2 _Jaera_ species.
+Ribbon plots visualise synteny and rearrangements between assemblies. This example plot shows the conservation of synteny between 2 _Jaera_ species and breakdown of synteny as the evolutionary distance increases to _Asellus aquaticus_.
 
 :::grid{container direction="row" spacing="1" inline}
 
 ```report
 report: ribbon
-reorient: true
+x: assembly_id=GCA_977012755.1,GCA_965208005.1,GCA_964212115.1 AND feature_type=arthropoda_odb12-busco-gene AND busco_status!=duplicated AND collate(sequence_id,busco_name)
+cat: sequence_id[20]+
 compactLegend: true
-x: assembly_id=queryA.assembly_id,queryB.assembly_id AND collate(sequence_id,busco_name) AND feature_type=arthropoda_odb12-busco-gene AND busco_status!=duplicated
-queryA: assembly--tax_name(Jaera praehirsuta)
-queryB: assembly--tax_name(Jaera albifrons)
-xOpts: ;;;;Jaera praehirsuta
-yOpts: ;;;;Jaera albifrons
-caption: Ribbon plot of Jaera praehirsuta and Jaera albifrons using Arthropoda BUSCO genes
-plotRatio: 3
-ratio: 3
+reorient: true
+ribbonAlign: reference
+ribbonPassThrough: true
 result: feature
 taxonomy: ncbi
+ratio: 2
 size: 12
 ```
 

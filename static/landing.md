@@ -37,7 +37,7 @@ Visit the [templates page](/templates) for more examples.
 
 ## Ribbon plots
 
-:hub allows exploration of synteny through ribbon plots between pairs of complete assemblies or subsets of chromosomes
+:hub allows exploration of synteny through ribbon plots between 2 or more complete assemblies or subsets of chromosomes
 
 ```report
 report: ribbon
@@ -72,10 +72,10 @@ Busco identities are recorded for each taxon, allowing plots of BUSCO counts aga
 
 ```report
 report: scatter
-x: tax_tree(Isopoda) AND assembly_span AND arthropoda_odb12_complete
+x: tax_tree(Peracarida) AND assembly_span AND arthropoda_odb12_complete
 y: arthropoda_odb12_complete
 rank: species
-cat: genus[6]
+cat: family[20]
 includeEstimates: false
 scatterThreshold: -1
 result: taxon
